@@ -4,6 +4,10 @@ export function uid() {
   return Math.random().toString(36).slice(2, 9);
 }
 
+export function now() {
+  return Date.now();
+}
+
 export function initials(name) {
   return name
     .trim()
