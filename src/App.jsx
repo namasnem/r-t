@@ -7,7 +7,7 @@ import { AddContactModal } from "./components/AddContactModal.jsx";
 import { LogModal } from "./components/LogModal.jsx";
 
 export default function App() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(loadData);
   const [selectedId, setSelectedId] = useState(null);
   const [showAdd, setShowAdd] = useState(false);
   const [showLog, setShowLog] = useState(false);
@@ -27,32 +27,11 @@ export default function App() {
       ::-webkit-scrollbar-thumb { background: ${T.border}; border-radius: 2px; }
     `;
     document.head.appendChild(st);
-
-    setData(loadData());
   }, []);
 
   useEffect(() => {
     if (data) saveData(data);
   }, [data]);
-
-  if (!data) {
-    return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          minHeight: "100vh",
-          background: T.bg,
-          fontFamily: T.fontSerif,
-          fontSize: 20,
-          color: T.muted,
-        }}
-      >
-        Loading…
-      </div>
-    );
-  }
 
   const selected = data.contacts.find((c) => c.id === selectedId) ?? null;
 

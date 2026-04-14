@@ -3,7 +3,7 @@ import { Overlay } from "./primitives.jsx";
 import { Avatar } from "./primitives.jsx";
 import { T, btnPrimary, btnGhost } from "../theme.js";
 import { QUESTIONS, MAX_SCORE } from "../questions.js";
-import { uid, strengthInfo } from "../utils.js";
+import { uid, now, strengthInfo } from "../utils.js";
 
 export function LogModal({ contact, onLog, onClose }) {
   const [step, setStep] = useState(0);
@@ -29,7 +29,7 @@ export function LogModal({ contact, onLog, onClose }) {
       onLog({
         id: uid(),
         contactId: contact.id,
-        date: Date.now(),
+        date: now(),
         answers: next,
         score,
       });
